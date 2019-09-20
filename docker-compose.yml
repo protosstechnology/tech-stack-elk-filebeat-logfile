@@ -1,0 +1,11 @@
+version: '2'
+
+services:
+
+  filebeat:
+    build:
+      context: filebeat/
+    command: filebeat -e -d filebeat.yml -d "publish"
+    volumes:
+      - ./filebeat/config/filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - ./log:/usr/share/filebeat/logs
